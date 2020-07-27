@@ -1,0 +1,17 @@
+{
+  "name": "mbt-build-sql",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^3",
+    "@sap/hana-client": "^2.4.177",
+    "express": "^4",
+    "sqlite": "^4"
+  },
+  "scripts": {
+    "start": "npx cds run"
+  }
+}

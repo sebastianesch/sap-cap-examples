@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "${workspaceFolder:sap-cap-examples}/mbt-build-sql/mydb",
+            "driver": "SQLite",
+            "name": "build-sql",
+            "previewLimit": 50
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

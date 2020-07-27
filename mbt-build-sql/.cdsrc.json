@@ -1,0 +1,19 @@
+{
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sqlite",
+                "credentials": {
+                    "database": "mydb"
+                }
+            }
+        },
+        "[production]": {
+            "requires": {
+                "db": {
+                    "kind": "hana"
+                }
+            }
+        }
+    }
+}
