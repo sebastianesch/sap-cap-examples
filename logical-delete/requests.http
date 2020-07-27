@@ -1,0 +1,9 @@
+GET http://localhost:4004/foo/Foo
+
+###
+
+GET http://localhost:4004/foo/Foo(214b4d29-e5a7-419d-b368-69fa134177ea)
+
+###
+
+DELETE http://localhost:4004/foo/Foo(214b4d29-e5a7-419d-b368-69fa134177ea)
