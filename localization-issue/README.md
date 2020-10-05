@@ -8,7 +8,7 @@ Reading the documentation, my expectation would be, that all locations work and 
 are also supported.
 
 | Location of messages.properties                 | Status        |
-|-------------------------------------------------|---------------|
+|-------------------------------------------------|:-------------:|
 | <project_root>/_i18n/messages.properties        | Works         |
 | <project_root>/i18n/messages.properties         | Does not work |
 | <project_root>/assets/messages.properties       | Does not work |
