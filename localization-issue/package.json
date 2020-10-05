@@ -1,0 +1,37 @@
+{
+  "name": "localization-issue",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^4",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-subset": "^1.6.0",
+    "sqlite3": "^5",
+    "supertest": "^5.0.0"
+  },
+  "scripts": {
+    "start": "npx cds run",
+    "jest": "npx jest --verbose",
+    "test": "npm run jest -s"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "cds": {
+    "i18n": {
+      "folders": [
+        "_i18n",
+        "i18n",
+        "assets/i18n",
+        "translations"
+      ]
+    }
+  }
+}
