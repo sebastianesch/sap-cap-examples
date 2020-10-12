@@ -58,3 +58,9 @@ To demonstrate the issue, the project provides eight entities with custom handle
 a localized error message.
 
 You can run the tests with `npm test`. Of the eight provided test cases, only one passes.
+
+# Resolution
+
+The answer in my [SAP Community Question](https://answers.sap.com/questions/13155742/) is that the message localization
+picks the message.properties file from the first location specified (_i18n, i18n, assests/i18n) from the *root* folder
+of the CAP project. Additional locations are ignored.
