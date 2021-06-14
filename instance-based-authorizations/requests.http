@@ -1,0 +1,22 @@
+@url=http://localhost:4004
+@user=alice
+@password=alice
+
+### Unrestricted - returns Foos for all users
+GET {{url}}/foo/UnrestrictedFoo
+Authorization: Basic {{user}}:{{password}}
+
+### Before Handler - returns Foos for current user
+### Restriction is added manually in a before handler
+GET {{url}}/foo/BeforeFoo
+Authorization: Basic {{user}}:{{password}}
+
+### Restricted - returns Foos for current user
+### Restriction Annotation in Service definition is used
+GET {{url}}/foo/RestrictedFoo
+Authorization: Basic {{user}}:{{password}}
+
+### Where - returns Foos for current user
+### Where clause in Service definition is used
+GET {{url}}/foo/WhereFoo
+Authorization: Basic {{user}}:{{password}}
