@@ -1,0 +1,9 @@
+LOCALE;CODE;NAME;DESCR
+en;owner;Owner;Owner of the Project
+en;member;Member;Member of the Project
+en;developer;Developer;Developer on the Project
+en;guest;Guest;Guest of the Project
+de;owner;Besitzer;Besitzer des Projekts
+de;member;Mitglied;Mitglied des Projekts
+de;developer;Entwickler;Entwickler im Projekt
+de;guest;Gast;Gast im Projekt

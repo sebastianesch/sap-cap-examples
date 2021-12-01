@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ProjectService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Projects" EntityType="ProjectService.Projects"/>
+                <EntitySet Name="Persons" EntityType="ProjectService.Persons"/>
+                <EntitySet Name="ProjectMembers" EntityType="ProjectService.ProjectMembers"/>
+                <EntitySet Name="ProjectRoles" EntityType="ProjectService.ProjectRoles"/>
+                <EntitySet Name="ProjectRoles_texts" EntityType="ProjectService.ProjectRoles_texts"/>
+                <AssociationSet Name="ProjectMembers_project" Association="ProjectService.ProjectMembers_project">
+                    <End Role="ProjectMembers" EntitySet="ProjectMembers"/>
+                    <End Role="Projects" EntitySet="Projects"/>
+                </AssociationSet>
+                <AssociationSet Name="ProjectMembers_person" Association="ProjectService.ProjectMembers_person">
+                    <End Role="ProjectMembers" EntitySet="ProjectMembers"/>
+                    <End Role="Persons" EntitySet="Persons"/>
+                </AssociationSet>
+                <AssociationSet Name="ProjectMembers_role" Association="ProjectService.ProjectMembers_role">
+                    <End Role="ProjectMembers" EntitySet="ProjectMembers"/>
+                    <End Role="ProjectRoles" EntitySet="ProjectRoles"/>
+                </AssociationSet>
+                <AssociationSet Name="ProjectRoles_texts_1" Association="ProjectService.ProjectRoles_texts_1">
+                    <End Role="ProjectRoles" EntitySet="ProjectRoles"/>
+                    <End Role="ProjectRoles_texts" EntitySet="ProjectRoles_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="ProjectRoles_localized" Association="ProjectService.ProjectRoles_localized">
+                    <End Role="ProjectRoles" EntitySet="ProjectRoles"/>
+                    <End Role="ProjectRoles_texts" EntitySet="ProjectRoles_texts"/>
+                </AssociationSet>
+            </EntityContainer>
+            <EntityType Name="Projects">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="name" Type="Edm.String"/>
+                <NavigationProperty Name="members" Relationship="ProjectService.ProjectMembers_project" FromRole="Projects" ToRole="ProjectMembers"/>
+            </EntityType>
+            <EntityType Name="Persons">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="firstName" Type="Edm.String" Nullable="false"/>
+                <Property Name="lastName" Type="Edm.String" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="ProjectMembers">
+                <Key>
+                    <PropertyRef Name="project_ID"/>
+                    <PropertyRef Name="person_ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="project" Relationship="ProjectService.ProjectMembers_project" FromRole="ProjectMembers" ToRole="Projects"/>
+                <Property Name="project_ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="person" Relationship="ProjectService.ProjectMembers_person" FromRole="ProjectMembers" ToRole="Persons"/>
+                <Property Name="person_ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="role" Relationship="ProjectService.ProjectMembers_role" FromRole="ProjectMembers" ToRole="ProjectRoles"/>
+                <Property Name="role_code" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="ProjectRoles">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
+                <NavigationProperty Name="texts" Relationship="ProjectService.ProjectRoles_texts_1" FromRole="ProjectRoles" ToRole="ProjectRoles_texts"/>
+                <NavigationProperty Name="localized" Relationship="ProjectService.ProjectRoles_localized" FromRole="ProjectRoles" ToRole="ProjectRoles_texts"/>
+            </EntityType>
+            <EntityType Name="ProjectRoles_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
+            </EntityType>
+            <Association Name="ProjectMembers_project">
+                <End Role="ProjectMembers" Type="ProjectService.ProjectMembers" Multiplicity="*"/>
+                <End Role="Projects" Type="ProjectService.Projects" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="Projects">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ProjectMembers">
+                        <PropertyRef Name="project_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ProjectMembers_person">
+                <End Role="ProjectMembers" Type="ProjectService.ProjectMembers" Multiplicity="*"/>
+                <End Role="Persons" Type="ProjectService.Persons" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Persons">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ProjectMembers">
+                        <PropertyRef Name="person_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ProjectMembers_role">
+                <End Role="ProjectMembers" Type="ProjectService.ProjectMembers" Multiplicity="*"/>
+                <End Role="ProjectRoles" Type="ProjectService.ProjectRoles" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ProjectRoles">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="ProjectMembers">
+                        <PropertyRef Name="role_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ProjectRoles_texts_1">
+                <End Role="ProjectRoles" Type="ProjectService.ProjectRoles" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="ProjectRoles_texts" Type="ProjectService.ProjectRoles_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="ProjectRoles_localized">
+                <End Role="ProjectRoles" Type="ProjectService.ProjectRoles" Multiplicity="*"/>
+                <End Role="ProjectRoles_texts" Type="ProjectService.ProjectRoles_texts" Multiplicity="0..1"/>
+            </Association>
+            <Annotations Target="ProjectService.Projects" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="createdBy"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="createdAt"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ProjectService.Projects/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Projects/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Projects/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Projects/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Projects/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="projectName"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Projects/members" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="projectMembers"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Persons/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Persons/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Persons/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Persons/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Persons/firstName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="firstName"/>
+            </Annotations>
+            <Annotations Target="ProjectService.Persons/lastName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="lastName"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/project" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="project"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/project_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="project"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/person" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="person"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/person_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="person"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/role" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="role"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectMembers/role_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="role"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="role"/>
+                        <PropertyValue Property="CollectionPath" String="ProjectRoles"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="role_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectRoles" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectRoles/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectRoles/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectRoles/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="code"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectRoles_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectRoles_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="ProjectService.ProjectRoles_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="code"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

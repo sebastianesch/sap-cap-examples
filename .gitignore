@@ -2,3 +2,7 @@ localization-issue/.vscode/extensions.json
 localization-issue/.vscode/launch.json
 localization-issue/.vscode/settings.json
 localization-issue/.vscode/tasks.json
+mta_archives
+gen
+sqlite.db
+default-env.json

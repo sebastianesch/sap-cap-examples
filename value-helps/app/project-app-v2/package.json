@@ -1,0 +1,37 @@
+{
+	"name": "project-app-v2",
+	"version": "0.0.1",
+	"private": true,
+	"sapux": true,
+	"sapuxLayer": "CUSTOMER_BASE",
+	"description": "The Projects V2",
+	"keywords": [
+		"ui5",
+		"openui5",
+		"sapui5"
+	],
+	"main": "webapp/index.html",
+	"scripts": {
+		"start": "echo \"This application was generated with a local metadata file and does not reference a live server. Please add the required server configuration or start this application with mock data using the target: npm run start-mock\"",
+		"start-local": "fiori run --config ./ui5-local.yaml --open 'test/flpSandboxMockServer.html#projectappv2-tile'",
+		"start-noflp": "echo \"This application was generated with a local metadata file and does not reference a live server. Please add the required server configuration or start this application with mock data using the target: npm run start-mock\"",
+		"start-variants-management": "fiori run --open \"preview.html?fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+		"build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
+		"deploy": "fiori verify",
+		"deploy-config": "fiori add deploy-config",
+		"start-mock": "fiori run --open 'test/flpSandboxMockServer.html#projectappv2-tile'"
+	},
+	"devDependencies": {
+		"@ui5/cli": "^2.11.1",
+		"@ui5/fs": "^2.0.6",
+		"@ui5/logger": "^2.0.1",
+		"@sap/ux-ui5-tooling": "1",
+		"rimraf": "3.0.2",
+		"@sap/ux-specification": "latest"
+	},
+	"ui5": {
+		"dependencies": [
+			"@sap/ux-ui5-tooling"
+		]
+	}
+}
