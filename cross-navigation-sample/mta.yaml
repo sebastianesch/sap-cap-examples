@@ -119,7 +119,6 @@ resources:
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
-    service-name: undefined-html5-srv
     service-plan: app-host
 
 - name: cross-navigation-sample-destination-service
@@ -146,5 +145,4 @@ resources:
           existing_destinations_policy: update
       version: 1.0.0
     service: destination
-    service-name: undefined-destination-service
     service-plan: lite
