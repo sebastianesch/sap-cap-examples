@@ -1,0 +1,13 @@
+@url = http://localhost:4004/odata/v4
+
+###
+GET {{url}}/root-a/RootA
+
+###
+GET {{url}}/root-a/RootB
+
+###
+GET {{url}}/root-b/RootA
+
+###
+GET {{url}}/root-b/RootB

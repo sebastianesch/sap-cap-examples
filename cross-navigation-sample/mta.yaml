@@ -1,0 +1,150 @@
+_schema-version: "3.1"
+ID: cross-navigation-sample
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx cds build --production
+modules:
+- name: cross-navigation-sample-srv
+  type: nodejs
+  path: gen/srv
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm
+  provides:
+    - name: srv-api # required by consumers of CAP services (e.g. approuter)
+      properties:
+        srv-url: ${default-url}
+  requires:
+    - name: cross-navigation-sample-db
+    - name: cross-navigation-sample-auth
+
+- name: cross-navigation-sample-db-deployer
+  type: hdb
+  path: gen/db
+  parameters:
+    buildpack: nodejs_buildpack
+  requires:
+    - name: cross-navigation-sample-db
+
+- name: cross-navigation-sample-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: cross-navigation-sample-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - examplerootaapp.zip
+      name: examplerootaapp
+      target-path: resources/
+
+- name: examplerootaapp
+  type: html5
+  path: app/roota-app
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+
+- name: examplerootbapp
+  type: html5
+  path: app/rootb-app
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+
+- name: cross-navigation-sample-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: cross-navigation-sample-destination-service
+    parameters:
+      content-target: true
+  - name: cross-navigation-sample-repo-host
+    parameters:
+      service-key:
+        name: cross-navigation-sample-repo-host-key
+  - name: cross-navigation-sample-auth
+    parameters:
+      service-key:
+        name: cross-navigation-sample-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: cross_navigation_sample_html5_repo_host
+          ServiceInstanceName: cross-navigation-sample-repo-host
+          ServiceKeyName: cross-navigation-sample-repo-host-key
+          sap.cloud.service: cross.navigation.sample
+        - Authentication: OAuth2UserTokenExchange
+          Name: cross_navigation_sample_auth
+          ServiceInstanceName: cross-navigation-sample-auth
+          ServiceKeyName: cross-navigation-sample-auth-key
+          sap.cloud.service: cross.navigation.sample
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+
+resources:
+- name: cross-navigation-sample-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+
+- name: cross-navigation-sample-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: xsuaa
+    service-plan: application
+    path: ./xs-security.json
+
+- name: cross-navigation-sample-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: undefined-html5-srv
+    service-plan: app-host
+
+- name: cross-navigation-sample-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            Description: Destination for the CAP API
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: cross_navigation_sample_api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: undefined-destination-service
+    service-plan: lite

@@ -1,0 +1,6 @@
+code,name,descr,criticality,createdAt,createdBy,modifiedAt,modifiedBy
+new,New,New,5,2024-08-22T09:00:00Z,alice,2023-04-26T09:00:00Z,alice
+in-progress,In Progress,In Progress,0,2024-08-22T09:00:00Z,alice,2023-04-26T09:00:00Z,alice
+completed,Completed,Completed,3,2024-08-22T09:00:00Z,alice,2023-04-26T09:00:00Z,alice
+late,Late,Late,2,2024-08-22T09:00:00Z,alice,2023-04-26T09:00:00Z,alice
+obsolete,Obsolete,Obsolete,1,2024-08-22T09:00:00Z,alice,2023-04-26T09:00:00Z,alice

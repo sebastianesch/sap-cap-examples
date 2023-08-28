@@ -1,0 +1,6 @@
+ID,rootB_ID,createdAt,createdBy,modifiedAt,modifiedBy,name,description,status_code
+eba614e8-a514-b1b6-55b3-6ca81b3a2444,edd09448-da61-d86b-79d8-2d38b58fdd53,2024-08-22T09:00:00Z,alice,2023-04-26T09:00:00Z,alice,RootA #1,"accumsan sed, facilisis vitae, orci. Phasellus dapibus quam quis",new
+eedcb9c5-0e09-a112-603d-ae34bcbc6737,6eadc559-e4bc-c268-2c6c-93988c652364,2023-11-13T09:00:00Z,alice,2023-04-19T09:00:00Z,alice,RootA #2,tempus risus. Donec egestas. Duis ac arcu.,in-progress
+3873646c-a11a-7cd6-b8f7-aefbf431f8a7,82e4f5ee-c112-3553-b69d-b336809a2d1f,2023-06-11T09:00:00Z,alice,2022-10-13T09:00:00Z,alice,RootA #3,"risus. Quisque libero lacus, varius et,",late
+862106ec-b403-3099-51d5-6144f3d9c13a,b9a1c633-3237-a793-0ec5-a6494d542a99,2024-02-09T09:00:00Z,alice,2024-04-10T09:00:00Z,alice,RootA #4,convallis convallis dolor. Quisque tincidunt pede,completed
+6613081a-28ab-bda0-6e23-775a57b9a510,681ba682-f461-3ac8-b8c3-6e047b3f2539,2023-04-27T09:00:00Z,alice,2023-06-26T09:00:00Z,alice,RootA #5,"In lorem. Donec elementum, lorem ut aliquam iaculis,",obsolete

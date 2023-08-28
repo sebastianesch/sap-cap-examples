@@ -1,0 +1,27 @@
+{
+    "name": "rootb-app",
+    "version": "0.0.1",
+    "description": "A Fiori application for RootB.",
+    "keywords": [
+        "ui5",
+        "openui5",
+        "sapui5"
+    ],
+    "main": "webapp/index.html",
+    "scripts": {
+        "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+        "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateManifestBundle generateCachebusterInfo",
+        "deploy": "fiori verify",
+        "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
+    },
+    "devDependencies": {
+        "@sap/ui5-builder-webide-extension": "^1.1.9",
+        "@sap/ux-specification": "^1.108.12",
+        "@sap/ux-ui5-tooling": "^1.10.5",
+        "@ui5/cli": "^3.5.0",
+        "@ui5/fs": "^3.0.4",
+        "@ui5/logger": "^3.0.0",
+        "rimraf": "^3.0.2",
+        "ui5-task-zipper": "^3.0.1"
+    }
+}

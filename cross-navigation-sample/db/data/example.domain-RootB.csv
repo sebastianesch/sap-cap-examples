@@ -1,0 +1,6 @@
+ID,rootA_ID,createdAt,createdBy,modifiedAt,modifiedBy,name,description,status_code
+edd09448-da61-d86b-79d8-2d38b58fdd53,eba614e8-a514-b1b6-55b3-6ca81b3a2444,2023-08-08T09:00:00Z,alice,2022-09-08T09:00:00Z,alice,RootB #1,"mattis velit justo nec ante. Maecenas mi felis, adipiscing",new
+6eadc559-e4bc-c268-2c6c-93988c652364,eedcb9c5-0e09-a112-603d-ae34bcbc6737,2024-08-07T09:00:00Z,alice,2024-04-22T09:00:00Z,alice,RootB #2,"Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt,",in-progress
+82e4f5ee-c112-3553-b69d-b336809a2d1f,3873646c-a11a-7cd6-b8f7-aefbf431f8a7,2024-04-04T09:00:00Z,alice,2023-02-14T09:00:00Z,alice,RootB #3,"pharetra sed, hendrerit a, arcu. Sed et",late
+b9a1c633-3237-a793-0ec5-a6494d542a99,862106ec-b403-3099-51d5-6144f3d9c13a,2024-05-24T09:00:00Z,alice,2024-04-09T09:00:00Z,alice,RootB #4,sem. Pellentesque ut ipsum ac,completed
+681ba682-f461-3ac8-b8c3-6e047b3f2539,6613081a-28ab-bda0-6e23-775a57b9a510,2023-04-19T09:00:00Z,alice,2024-05-02T09:00:00Z,alice,RootB #5,"enim. Suspendisse aliquet, sem ut cursus",obsolete
