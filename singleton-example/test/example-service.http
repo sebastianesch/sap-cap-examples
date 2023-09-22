@@ -1,0 +1,28 @@
+@url = http://localhost:4004/odata/v4/example
+@alice = Basic alice:alice
+@bob = Basic bob:bob
+
+###
+GET {{url}}/Data
+Authorization: {{alice}}
+
+###
+GET {{url}}/MyData
+Authorization: {{alice}}
+
+###
+GET {{url}}/MyData
+Authorization: {{bob}}
+
+
+###
+GET {{url}}/Bar
+Authorization: {{alice}}
+
+###
+GET {{url}}/Foo
+Authorization: {{alice}}
+
+###
+GET {{url}}/Foo
+Authorization: {{bob}}
