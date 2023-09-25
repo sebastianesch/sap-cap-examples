@@ -1,0 +1,11 @@
+ID,createdAt,createdBy,modifiedAt,modifiedBy,name,description,parent_ID
+c6e462c8-4e9c-4ebe-bd8a-55685b26b382,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #1,Child Entity #1 of Root Entity #1,9fd562b2-d568-4ebb-a39c-ae95da82e8f7
+c30cbe13-d675-4ee1-81a8-a7347e7a8c72,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #1,Child Entity #1 of Root Entity #2,6dd0e5c0-f1d3-4164-8256-de350ad1a2b6
+2b9c711c-634d-4dd4-9287-2c8fb91719c5,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #1,Child Entity #1 of Root Entity #3,102e4c2a-d878-49f0-9a90-0f1ed74ba525
+7b25fc8a-60e5-4c83-9de8-36fa41f09832,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #1,Child Entity #1 of Root Entity #4,a64f86fc-7386-4b40-93e2-ffc8fbf34136
+275cfc05-2b62-442f-b501-a0dd390375f7,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #1,Child Entity #1 of Root Entity #5,372b71c9-c658-410c-96cc-29c91bbe5eb2
+535372a0-cd04-4512-a576-3f888de68480,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #2,Child Entity #2 of Root Entity #1,9fd562b2-d568-4ebb-a39c-ae95da82e8f7
+34689ddd-1692-417c-a468-b53c94b717cf,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #2,Child Entity #2 of Root Entity #2,6dd0e5c0-f1d3-4164-8256-de350ad1a2b6
+f4c2ef72-02dc-415f-b479-b7e8ba8b8584,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #2,Child Entity #2 of Root Entity #3,102e4c2a-d878-49f0-9a90-0f1ed74ba525
+77991204-8a84-4cc0-bdbb-349fc7301e06,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #2,Child Entity #2 of Root Entity #4,a64f86fc-7386-4b40-93e2-ffc8fbf34136
+a88c4ee5-4c29-4f5c-9abb-53bd5b45d151,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Child #2,Child Entity #2 of Root Entity #5,372b71c9-c658-410c-96cc-29c91bbe5eb2

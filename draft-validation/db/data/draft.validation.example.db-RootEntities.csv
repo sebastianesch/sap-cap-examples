@@ -1,0 +1,6 @@
+ID,createdAt,createdBy,modifiedAt,modifiedBy,name,description
+9fd562b2-d568-4ebb-a39c-ae95da82e8f7,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Root #1,Root Entity #1
+6dd0e5c0-f1d3-4164-8256-de350ad1a2b6,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Root #2,Root Entity #2
+102e4c2a-d878-49f0-9a90-0f1ed74ba525,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Root #3,Root Entity #3
+a64f86fc-7386-4b40-93e2-ffc8fbf34136,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Root #4,Root Entity #4
+372b71c9-c658-410c-96cc-29c91bbe5eb2,2023-01-01T09:00:00Z,alice,2023-01-01T09:00:00Z,alice,Root #5,Root Entity #5
