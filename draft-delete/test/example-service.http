@@ -1,0 +1,31 @@
+@url = http://localhost:4004/odata/v4/example
+@fooId=d9fb30aa-3577-41cd-95a4-f3bf36eb2307
+@barId=2533d2c0-ce53-4cda-ad71-ca98c37fb9d4
+@otherBarId=7717cc0f-5618-4ab2-b5ca-2732a781f390
+
+###
+# Show Foos with Bars
+GET {{url}}/Foos?$expand=bars
+
+###
+# Create Foo Draft
+POST {{url}}/Foos(ID={{fooId}},IsActiveEntity=true)/ExampleService.draftEdit
+Content-Type: application/json
+
+{}
+
+###
+# Delete Bar from Foo Draft
+# barId is neither in request.params nor in request.data
+# barId is only accessible via request.query.DELETE.from.ref[0].where[2].val
+# expectation would be that barId is in request.params[0].ID and request.data.ID as in non-draft delete
+DELETE {{url}}/Bars(ID={{barId}},IsActiveEntity=false)
+
+###
+# Delete Bar without Draft
+# otherBarId is in request.params[0].ID and request.data.ID
+DELETE {{url}}/Bars(ID={{otherBarId}},IsActiveEntity=true)
+
+###
+# Show Foos with Bars
+GET {{url}}/Foos?$expand=bars
