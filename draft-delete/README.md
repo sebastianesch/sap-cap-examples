@@ -8,7 +8,7 @@ In DELETE handlers for Draft entities the ID is not included in `request.data` n
 
 Expected behaviour would be to have ID for the entity in `request.data` and / or `request.params` as in the non-Draft case.
 
-### Steps to reproduce
+## Steps to reproduce
 
 Run `cds watch` and then execute the API calls in `test/example-service.http`
 
@@ -29,3 +29,17 @@ The last line shows that `request.data` and `request.params` contain the ID of t
 
 The third line shows that the request to delete a draft Bar has empty `request.data` and `request.params`.
 The fourth line shows, that in the current case, the ID of the Bar to be deleted is available via `request.query.DELETE.from.ref[0].where[2].val`.
+
+## Version Info
+
+draft-delete % cds -v
+@cap-js/sqlite: 1.3.1
+@sap/cds: 7.3.0
+@sap/cds-compiler: 4.3.0
+@sap/cds-dk (global): 7.3.0
+@sap/cds-fiori: 1.1.0
+@sap/cds-foss: 4.0.2
+@sap/cds-mtxs: 1.12.0
+@sap/eslint-plugin-cds: 2.6.3
+Node.js: v18.17.1
+draft-delete: 1.0.0
