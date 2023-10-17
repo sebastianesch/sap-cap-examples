@@ -32,6 +32,7 @@ The fourth line shows, that in the current case, the ID of the Bar to be deleted
 
 ## Version Info
 
+```
 draft-delete % cds -v
 @cap-js/sqlite: 1.3.1
 @sap/cds: 7.3.0
@@ -43,3 +44,4 @@ draft-delete % cds -v
 @sap/eslint-plugin-cds: 2.6.3
 Node.js: v18.17.1
 draft-delete: 1.0.0
+```
