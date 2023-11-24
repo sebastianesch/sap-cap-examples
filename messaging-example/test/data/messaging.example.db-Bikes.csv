@@ -1,0 +1,5 @@
+ID,createdAt,createdBy,modifiedAt,modifiedBy,name,type_code
+d01dddb7-c3a2-4b6f-b0bf-048c0b5d5b3e,2023-11-24T00:00:00Z,alice,2023-11-24T00:00:00Z,alice,Bike #1,city
+bcd045a2-2885-4a71-9441-89bc51b1251d,2023-11-24T00:00:00Z,alice,2023-11-24T00:00:00Z,alice,Bike #2,city
+4af595ea-15ed-4979-9016-24728ec61f1c,2023-11-24T00:00:00Z,alice,2023-11-24T00:00:00Z,alice,Bike #3,city
+f5c88c2e-0845-4c72-99c0-68a1296a2824,2023-11-24T00:00:00Z,alice,2023-11-24T00:00:00Z,alice,Bike #4,city

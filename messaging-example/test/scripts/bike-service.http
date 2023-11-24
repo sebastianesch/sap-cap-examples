@@ -1,0 +1,5 @@
+###
+GET http://localhost:4004/odata/v4/bike/Bikes
+
+###
+GET http://localhost:4004/odata/v4/bike/Bikes?$expand=type
