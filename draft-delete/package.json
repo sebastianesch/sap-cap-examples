@@ -14,5 +14,10 @@
   },
   "scripts": {
     "start": "cds-serve"
+  },
+  "cds": {
+    "fiori": {
+      "draft_compat": true
+    }
   }
 }
