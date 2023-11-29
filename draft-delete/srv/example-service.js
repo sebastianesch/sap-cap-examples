@@ -11,7 +11,12 @@ class ExampleService extends cds.ApplicationService {
 
         this.before('DELETE', 'Bars.drafts', async function beforeDeleteBarsDrafts(request) {
             log.info('before DELETE Bars.drafts - request.data:', request.data, '- request.params:', request.params)
+            /*
+                Output: [example-service] - before DELETE Bars.drafts - request.data: {} - request.params: []
+                request.data and request.params do not contain any information about the draft to be deleted.
+            */
             log.info('Bars.drafts ID:', request.query.DELETE.from.ref[0].where[2].val)
+            /* The only way to get the draft ID get it from the DELETE query in the request. */
         })
 
         return super.init()
