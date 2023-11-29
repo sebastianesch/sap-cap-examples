@@ -1,6 +1,6 @@
 # Draft Delete Example
 
-This project shows the different behaviours of DELETE requests for Draft and non-Draft entities for CAP 7.3.0.
+This project shows the different behaviours of DELETE requests for Draft and non-Draft entities for CAP 7.4.1.
 
 In DELETE handlers for non-Draft entities, the ID of the entity that is to be deleted is contained in the `request.data.ID` property and in `request.params[0].ID`.
 
@@ -12,7 +12,11 @@ Expected behaviour would be to have ID for the entity in `request.data` and / or
 
 Run `cds watch` and then execute the API calls in `test/example-service.http`
 
-The sample data csv files contain one entry for Foos with two Bars, first create a draft for the Foo entity with the `Create Foo Draft` request, then delete one Bar from the created draft via the `Delete Bar from Foo Draft` request. Then delete a non-draft Bar with the `Delete Bar without Draft` request.
+The sample data csv files contain one entry for Foos with two Bars.
+
+First create a draft for the Foo entity with the `Create Foo Draft` request, then delete one Bar from the created draft via the `Delete Bar from Foo Draft` request.
+
+Then delete a non-draft Bar with the `Delete Bar without Draft` request.
 
 Notice the log output on the console:
 
@@ -34,14 +38,14 @@ The fourth line shows, that in the current case, the ID of the Bar to be deleted
 
 ```
 draft-delete % cds -v
-@cap-js/sqlite: 1.3.1
-@sap/cds: 7.3.0
-@sap/cds-compiler: 4.3.0
-@sap/cds-dk (global): 7.3.0
+@cap-js/sqlite: 1.4.0
+@sap/cds: 7.4.1
+@sap/cds-compiler: 4.4.4
+@sap/cds-dk (global): 7.4.0
 @sap/cds-fiori: 1.1.0
-@sap/cds-foss: 4.0.2
-@sap/cds-mtxs: 1.12.0
-@sap/eslint-plugin-cds: 2.6.3
+@sap/cds-foss: 5.0.0
+@sap/cds-mtxs: 1.13.0
+@sap/eslint-plugin-cds: 2.6.4
 Node.js: v18.17.1
 draft-delete: 1.0.0
 ```
