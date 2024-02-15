@@ -1,0 +1,11 @@
+ID,createdAt,createdBy,modifiedAt,modifiedBy,name,isClosed
+cb897ee6-63d2-4072-955a-3f5d3fa25ec6,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #1,false
+8d7ae1b0-ef37-4e42-aba0-535802d29854,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #2,false
+3f474e80-8ede-45eb-8c5e-5d6fd6756067,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #3,false
+b11cacf8-4ef7-482e-8243-86bd3d6d98fa,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #4,false
+05e13cca-7cd6-4398-ad1b-df7e28df849a,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #5,false
+be574ba8-00d5-4e34-83ef-39acbed59fb1,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #6,false
+b9291c14-c745-4884-b6dc-e0c76a9f1260,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #7,false
+bd2e9dde-9b2b-449a-b781-c5d1b2089ead,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #8,false
+f683305e-28c3-4b8d-9b7c-4dcd1bcfaf75,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #9,false
+fb799bf9-8260-4988-a5d5-116c5f030d12,2024-02-01T09:00:00Z,alice,2024-02-01T09:00:00Z,alice,Project #10,false

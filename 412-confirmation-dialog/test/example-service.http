@@ -1,0 +1,20 @@
+@url = http://localhost:4004
+
+###
+GET {{url}}/odata/v4/example/Projects
+
+###
+GET {{url}}/odata/v4/example/Projects(ID=05e13cca-7cd6-4398-ad1b-df7e28df849a,IsActiveEntity=true)
+
+###
+POST {{url}}/odata/v4/example/Projects(ID=05e13cca-7cd6-4398-ad1b-df7e28df849a,IsActiveEntity=true)/closeProject
+Prefer: handling=strict
+Content-Type: application/json
+
+{}
+
+###
+POST {{url}}/odata/v4/example/Projects(ID=05e13cca-7cd6-4398-ad1b-df7e28df849a,IsActiveEntity=true)/closeProject
+Content-Type: application/json
+
+{}
