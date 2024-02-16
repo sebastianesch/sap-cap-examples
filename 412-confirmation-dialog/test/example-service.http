@@ -18,3 +18,12 @@ POST {{url}}/odata/v4/example/Projects(ID=05e13cca-7cd6-4398-ad1b-df7e28df849a,I
 Content-Type: application/json
 
 {}
+
+###
+POST {{url}}/odata/v4/example/Projects(ID=05e13cca-7cd6-4398-ad1b-df7e28df849a,IsActiveEntity=true)/ExampleService.closeProject
+Accept: application/json;odata.metadata=minimal;IEEE754Compatible=true
+Accept-Language: en
+Prefer: handling=strict
+Content-Type: application/json;charset=UTF-8;IEEE754Compatible=true
+
+{}
