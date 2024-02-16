@@ -40,3 +40,9 @@ if (request.headers['prefer'] === 'handling=strict') {
     return request.error(412, 'Precondition Failed: Confirm project closure')
 }
 ```
+
+Adding the response header `Preference-Applied: handling=strict` as mentioned
+[here](https://github.com/cap-js/docs/issues/436) leads to the Fiori Elements app staying in "busy" state after the
+action has been called.
+
+<img src="./docs/projects_app_with_resp_header_pref_applied.png" height="500px">
