@@ -12,6 +12,7 @@ class ExampleService extends cds.ApplicationService {
         this.on('closeProject', ['Projects', 'Projects.drafts'], async function onCloseProject(request) {
             log.info('on closeProject - params:', request.params, ' data:', request.data)
             if (request.headers['prefer'] === 'handling=strict') {
+                request._.odataRes.setHeader('Preference-Applied', 'handling=strict')
                 return request.error(412, 'Precondition Failed: Confirm project closure')
             } else {
                 await UPDATE(Projects).set({ isClosed: true }).where({ ID: request.params[0].ID })
